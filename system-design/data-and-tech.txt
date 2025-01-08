@@ -1,0 +1,54 @@
+Tech:
+
+Build a prototype of the core product -> the comparison site.
+
+Frontend - mobile app is best (next.js web app desirable)
+Keep it simple! -> just the product, don't get bogged down in the promotion,
+this is a backend technology exploration first and foremost
+
+Backend - csharp API with desired tech to explore
+API on Azure -> can you make it free tier with an App Service?
+200 entries, one for each country. API can be public to cut costs.
+
+Build the API using best practices: 
+csharp (rider)
+demonstrations of SOLID
+repository pattern 
+nunit 100% testing coverage 
+
+Data:
+Don't overcomplicate it. 
+Goal is: Best deal for consumers, tax payers, business owners
+
+Averages: 
+Cost 
+Waiting lists 
+Satisfaction 
+maybe 4 more metrics
+links to related articles (in the news etc)
+
+Countries
+UK 
+US 
+South Korea
+
+User Story
+I am a user.
+I open the app.
+I choose my 'base' country to compare in the left hand box. 
+I choose my comparison country on the right to compare on the right hand box.
+
+
+Left Box        Right Box 
+UK              South Korea
+ 
+Result: 
+South Korea is cheaper. 
+South Korea has shorter waiting times.
+Boolean logic: number comparison in ranking  South Koreans feel they have a great healthcare system.
+English people feel anger about their healthcare system.
+Ranking 
+6 South Korea 
+80 UK 
+
+Data should be placeholder

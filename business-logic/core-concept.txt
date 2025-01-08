@@ -42,5 +42,5 @@ Backend - csharp API with desired tech to explore
 API on Azure -> can you make it free tier with an App Service?
 200 entries, one for each country. API can be public to cut costs.
 
-Once you have the prototype app, you can use it during your 
-campaigning when you have the time.
+Once you have the prototype app, you can use it during campaigning to
+show during networking.
