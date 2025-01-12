@@ -15,6 +15,13 @@ csharp (rider)
 demonstrations of SOLID
 repository pattern 
 nunit 100% testing coverage 
+users?
+
+What further concepts could you add? 
+Maybe its better to explore more complicated data concepts in another project?
+(there's more to data structures than APIs, e.g. text adventure)
+
+BD roadmap?
 
 Data:
 Don't overcomplicate it. 
@@ -35,18 +42,20 @@ South Korea
 User Story
 I am a user.
 I open the app.
+I choose the reason I need treatment.
+Injury | Cancer | Disease | Physical Checkup | Mental Health Problem
 I choose my 'base' country to compare in the left hand box. 
 I choose my comparison country on the right to compare on the right hand box.
-
-
 Left Box        Right Box 
 UK              South Korea
- 
+
 Result: 
-South Korea is cheaper. 
-South Korea has shorter waiting times.
-Boolean logic: number comparison in ranking  South Koreans feel they have a great healthcare system.
-English people feel anger about their healthcare system.
+The average treatment for Injury costs $X in South Korea (X% cash, X% tax).
+The average wait for treatment for Injury is X weeks/months.
+The quality of treatment for Injury is South Korea is high/medium/low. 
+link - see how this is calculated...
+Articles related to Injury in South Korea (AI widget perhaps)
+
 Ranking 
 6 South Korea 
 80 UK 
