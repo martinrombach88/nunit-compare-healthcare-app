@@ -1,3 +1,7 @@
-# compare-healthcare-globally
+# mocked healthcare app
 
-A prototype for a country healthcare comparison app to encourage protest in countries with unpopular systems.
+A prototype for a country healthcare comparison API to encourage protest in countries with unpopular systems.
+Project explores csharp API fundamental concepts:
+SOLID
+repository pattern 
+100% testing coverage
