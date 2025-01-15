@@ -1,0 +1,56 @@
+
+User Story
+
+I am a user.
+I open the app.
+I choose the reason I need treatment.
+Injury | Cancer | Disease | Physical Checkup | Mental Health Problem
+I choose my 'base' country to compare in the left hand box. 
+I choose my comparison country on the right to compare on the right hand box.
+Left Box        Right Box 
+UK              South Korea
+
+Result: object
+
+What is handled by the API?
+
+Dynamic endpoint: compare {A} and {b}
+Send post object with:
+Base country
+Country to compare
+
+Receive
+Base country details
+Country to compare details
+Data in comparison object
+France has a 50% better waiting list for healthcare than the UK.
+
+GPT:
+Example:
+/health-systems/{country} for individual details.
+/health-systems/compare?country1=britain&country2=south-korea for comparisons.
+response:
+{
+  "country1": {
+    "name": "Britain",
+    "healthSystemDetails": { ... }
+  },
+  "country2": {
+    "name": "South Korea",
+    "healthSystemDetails": { ... }
+  },
+  "comparison": {
+    "betterHealthSystem": "South Korea",
+    "reasons": [ ... ]
+  }
+}
+
+Scalability:
+Depending on the complexity of the comparison logic, 
+it might be better to offload this computation to a backend service or
+ even a separate microservice.
+https://aws.amazon.com/compare/the-difference-between-microservices-and-apis/
+ 
+This microservice can just be a console app or something as a separate folder 
+to the API. This could be an opportunity to explore OOP and SOLID than the API.
+But then again, so could remaining in the api. Keep it mocked and it should be fine.

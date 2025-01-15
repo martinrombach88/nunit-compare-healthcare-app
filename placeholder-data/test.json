@@ -1,0 +1,93 @@
+[
+  {
+    "Country": "United Kingdom",
+    "Rank": 36,
+    "Average_waiting_list_for_an_operation_in_months": 18,
+    "Average_hours_to_be_seen_in_A&E": 8,
+    "Cost_of_treatment": {
+      "Tax_percentage": 100,
+      "Cash_percentage": 0
+    },
+    "Customer_Opinion": "Long wait, poor services"
+  },
+  {
+    "Country": "Switzerland",
+    "Rank": 10,
+    "Average_waiting_list_for_an_operation_in_months": 1,
+    "Average_hours_to_be_seen_in_A&E": 0.5,
+    "Cost_of_treatment": {
+      "Tax_percentage": 17,
+      "Cash_percentage": 83
+    },
+    "Customer_Opinion": "High-quality, efficient healthcare with moderate costs"
+  },
+  {
+    "Country": "Netherlands",
+    "Rank": 11,
+    "Average_waiting_list_for_an_operation_in_months": 1,
+    "Average_hours_to_be_seen_in_A&E": 1,
+    "Cost_of_treatment": {
+      "Tax_percentage": 70,
+      "Cash_percentage": 30
+    },
+    "Customer_Opinion": "Efficient and high-quality care with reasonable costs"
+  },
+
+  {
+    "Country": "Israel",
+    "Rank": 6,
+    "Average_waiting_list_for_an_operation_in_months": 2,
+    "Average_hours_to_be_seen_in_A&E": 1,
+    "Cost_of_treatment": {
+      "Tax_percentage": 63,
+      "Cash_percentage": 37
+    },
+    "Customer_Opinion": "High-quality care with moderate wait times"
+  },
+
+  {
+    "Country": "France",
+    "Rank": 7,
+    "Average_waiting_list_for_an_operation_in_months": 2,
+    "Average_hours_to_be_seen_in_A&E": 2,
+    "Cost_of_treatment": {
+      "Tax_percentage": 77,
+      "Cash_percentage": 23
+    },
+    "Customer_Opinion": "Highly rated healthcare with short wait times for emergencies, but long wait times for non-urgent care"
+  },
+
+  {
+    "Country": "United States",
+    "Rank": 69,
+    "Average_waiting_list_for_an_operation_in_months": 4,
+    "Average_hours_to_be_seen_in_A&E": 3,
+    "Cost_of_treatment": {
+      "Tax_percentage": 0,
+      "Cash_percentage": 100
+    },
+    "Customer_Opinion": "Mixed; excellent quality for those with insurance, but high costs and long waits for the uninsured."
+  },
+  {
+    "Country": "South Korea",
+    "Rank": 7,
+    "Average_waiting_list_for_an_operation_in_months": 1,
+    "Average_hours_to_be_seen_in_A&E": 1,
+    "Cost_of_treatment": {
+      "Tax_percentage": 50,
+      "Cash_percentage": 50
+    },
+    "Customer_Opinion": "High; widely regarded as efficient and affordable"
+  },
+  {
+    "Country": "Singapore",
+    "Rank": 1,
+    "Average_waiting_list_for_an_operation_in_months": 1,
+    "Average_hours_to_be_seen_in_A&E": 1,
+    "Cost_of_treatment": {
+      "Tax_percentage": 30,
+      "Cash_percentage": 70
+    },
+    "Customer_Opinion": "Ranked number 1 for quality care and efficiency"
+  }
+]

@@ -1,0 +1,28 @@
+
+get country
+/health-systems/{country}
+
+response
+  "country1": {
+    "name": "Britain",
+    "healthSystemDetails": { ... }
+  },
+  
+  
+get country comparison
+/health-systems/compare?country1=britain&country2=south-korea for comparisons.
+response:
+{
+  "country1": {
+    "name": "Britain",
+    "healthSystemDetails": { ... }
+  },
+  "country2": {
+    "name": "South Korea",
+    "healthSystemDetails": { ... }
+  },
+  "comparison": {
+    "betterHealthSystem": "South Korea",
+    "reasons": [ ... ]
+  }
+}
