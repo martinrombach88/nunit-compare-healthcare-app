@@ -23,3 +23,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+/*if you've missed anything for installation:
+https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-9.0&tabs=visual-studio-code#create-a-web-project
+*/
