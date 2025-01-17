@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using compare_healthcare_api.Models;
 
 namespace compare_healthcare_api.Controllers;
 
@@ -7,31 +8,21 @@ namespace compare_healthcare_api.Controllers;
 [Route("[controller]")]
 public class CountryController: ControllerBase
 {
+
     [HttpGet(Name = "GetCountry")]
-    
         public Country GetCountry() 
         //specific country as argument
     {
         //country object is retrieved and returned.
-        Country Britain = new Country();
-        
-        //failure state? try catch?
+        Country Britain = new Country();       
+		Britain.Name = "United Kingdom";
+		Britain.Rank = 36;
+        Britain.MonthWaitingListDelay = 18;
+        Britain.AandEHoursWait = 8;
+        Britain.CustomerOpinion = "Awful";
+        //cost of treatment o
         return Britain;
     }
-    [HttpGet(Name = "GetComparison")]  
-        public string GetComparison()
-    {
-        return "south korea is probably better than britain";
-    }
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    
 }
+        
