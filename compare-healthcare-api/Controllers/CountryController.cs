@@ -7,14 +7,14 @@ namespace compare_healthcare_api.Controllers;
 [Route("[controller]")]
 
 //optimise the endpoints:
-//case insensitive search
-//error handling
+//case insensitive search -> method is used often, should be abstracted into a class?
+//error handling -> error codes don't yet match
 //security measures? (e.g. sql injection)
 
 public class CountryController: ControllerBase {
 	//JSON file used instead of database (focus of project is tests, mocking, SOLID etc)
 	//how could these fields be abstracted and imported?
-	internal static string jsonData = System.IO.File.ReadAllText("Controllers/placeholder-data/test.json");
+	internal static string jsonData = System.IO.File.ReadAllText("Controllers/placeholder-data/countries.json");
 	internal static IEnumerable<Country>? countries = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<Country>>
 	(jsonData, new JsonSerializerOptions{IncludeFields = true}); 
 
@@ -23,7 +23,7 @@ public class CountryController: ControllerBase {
     {	
 		if (countries == null || countries.Any() == false) 
 		{
-			//handle no list error
+			return NotFound(new { message = "Country list unavailable.", error = "LISTEMPTY", statusCode = 404 });
 		}
         return Ok(countries);
     }
@@ -31,53 +31,58 @@ public class CountryController: ControllerBase {
 	[HttpGet("GetCountry/{countryName}")]
 	public IActionResult GetCountry(string countryName)
     {		
-		//If handled by dapper MS SQL, string could be:
+		//If handled by dapper and MS SQL, string could be:
 		//string sql = @"SELECT countryName, rank, monthWaitingListDelay, aAndEHoursWait, 
 		//CostOfTreatment, customerOpinion FROM healthcareDatabase WHERE countryName = britain"
 
 		Country country = new Country();
-		if (countries == null || countries.Any() == false ) 
+		
+		if (countries == null || countries.Any() == false || jsonData == null) 
 		{				
-			//handle no list error
+			return NotFound(new { message = "Country list unavailable.", error = "LISTEMPTY", statusCode = 404 });
 		} 
-		if (countries.Single(listCountry =>listCountry.countryName == countryName) != null) 
+		//csharp linq creates concise syntax similar to for each (singleOrDefault accounts for errors)
+		if (countries.SingleOrDefault(listCountry =>String.Equals(listCountry.countryName, countryName, StringComparison.OrdinalIgnoreCase)) == null) 
 		{
-			//csharp linq creates concise syntax similar to for each
-			country = countries.Single(listCountry => listCountry.countryName == countryName);
+			
+			return NotFound(new { message = "Invalid country entered.", error = "INVALIDCOUNTRY", statusCode = 400 });
 		}
-		else {
-			//handle no match error
+		else
+		{
+			country = countries.SingleOrDefault(listCountry =>
+				String.Equals(listCountry.countryName, countryName, StringComparison.OrdinalIgnoreCase));
 		}
-        return Ok(country);
+
+		return Ok(country);
     }
 
 	[HttpGet("GetComparisonResult/{baseCountryName}/{comparisonCountryName}")]
 	public IActionResult GetComparisonResult(string baseCountryName, string comparisonCountryName)
-	//If handled by dapper MS SQL, string could be:
+	//If handled by dapper and MS SQL, string could be:
 	//???
-    {	
-		ComparisonResult countriesResult = new ComparisonResult();
+	{
+		ComparisonResult countriesResult = null;
 		Country baseCountry = new Country();
 		Country comparisonCountry = new Country();
 		
-		if (countries == null || countries.Any() == false ) 
-		{				
-			//handle no list error
+		if (countries == null || countries.Any() == false) 
+		{
+			return NotFound(new { message = "Country list unavailable.", error = "LISTEMPTY", statusCode = 404 });
 		} 
-		if (countries.Single(listCountry =>listCountry.countryName == baseCountryName) != null) 
+		if (countries.SingleOrDefault(listCountry =>listCountry.countryName == baseCountryName) != null) 
 		{
-			baseCountry = countries.Single(listCountry => listCountry.countryName == baseCountryName);
+			baseCountry = countries.SingleOrDefault(listCountry => listCountry.countryName == baseCountryName);
 		}
-		if (countries.Single(listCountry =>listCountry.countryName == comparisonCountryName) != null) 
+		if (countries.SingleOrDefault(listCountry =>listCountry.countryName == comparisonCountryName) != null) 
 		{
-			comparisonCountry = countries.Single(listCountry => listCountry.countryName == comparisonCountryName);
+			comparisonCountry = countries.SingleOrDefault(listCountry => listCountry.countryName == comparisonCountryName);
 		}
 		if (baseCountry != null && comparisonCountry != null) {
-			countriesResult.baseCountry = baseCountry;
-			countriesResult.comparisonCountry = comparisonCountry;
+			countriesResult = new ComparisonResult(baseCountry, comparisonCountry);
 		}
-		else {
-			//handle not found error
+		else
+		{
+			return NotFound(new { message = "Invalid country entered.", error = "INVALIDCOUNTRY", statusCode = 400 });
 		}
         return Ok(countriesResult);
 	}

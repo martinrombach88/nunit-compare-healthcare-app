@@ -4,26 +4,27 @@ public class ComparisonResult
 {
     public Country baseCountry { get; set; }
     public Country comparisonCountry { get; set; }
-	//setters should look at base and comparison and automatically set differences
-	//set country by lower number of rank (i.e. higher)
-	//WinningCountry = BaseCountry.Rank > ComparisonCountry.Rank ? ComparisonCountry.Rank : BaseCountry.Rank
     public string winningCountry { get; set; }
-	//WinnerRankingHigherBy = BaseCountry.Rank - ComparisonCountry.Rank
     public int winnerRankingHigherBy { get; set; }
-	//see above
-    public int winnerWaitingListReduction { get; set; }
-	//see above
-    public int winnerAandEHoursReduction { get; set; }
-	//WinningOpinion = BaseCountry.Rank > ComparisonCountry.Rank ? $' {Winner.Name] is ' + ComparisonCountry.Opinion : BaseCountry.Opinion
+    public double winnerWaitingListReduction { get; set; }
+    public double winnerAandEHoursReduction { get; set; }
     public string winnerOpinion { get; set; }
 
-/*
-    "BaseCountry": "United Kingdom",
-    "ComparisonCountry": "South Korea",
-    "WinningCountry": "South Korea"
-    "WinnerRankingHigherBy": 34
-    "WinnerWaitingListReduction": 17
-    "WinnerA&EHoursReduction" 7
-    "WinnerOpinion: "High; widely regarded as efficient and affordable"
-*/
+    //how does constructor deal with null values?
+    public ComparisonResult(Country baseCountry, Country comparisonCountry)
+    {
+	    this.baseCountry = baseCountry;
+	    this.comparisonCountry = comparisonCountry;
+	    this.winningCountry = baseCountry.rank < comparisonCountry.rank
+		    ? baseCountry.countryName
+		    : comparisonCountry.countryName;
+	    //using absolute values only 
+	    this.winnerRankingHigherBy = Convert.ToInt32(Math.Abs(baseCountry.rank - comparisonCountry.rank));
+	    this.winnerWaitingListReduction =
+		    Convert.ToDouble(Math.Abs(baseCountry.monthWaitingListDelay -
+		                             comparisonCountry.monthWaitingListDelay)); 
+	    this.winnerAandEHoursReduction = Convert.ToDouble(Math.Abs(baseCountry.aAndEHoursWait -
+	                                                               comparisonCountry.aAndEHoursWait)); 
+	    this.winnerOpinion = baseCountry.rank < comparisonCountry.rank ? baseCountry.customerOpinion : comparisonCountry.customerOpinion;
+    }
 }
