@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using compare_healthcare_api.Models;
+using compare_healthcare_api.Helpers;
 
 namespace compare_healthcare_api.Controllers;
 [ApiController]
@@ -13,7 +14,7 @@ namespace compare_healthcare_api.Controllers;
 
 public class CountryController: ControllerBase {
 	//JSON file used instead of database (focus of project is tests, mocking, SOLID etc)
-	//how could these fields be abstracted and imported?
+	//abstract these fields to JSON helper
 	internal static string jsonData = System.IO.File.ReadAllText("Controllers/placeholder-data/countries.json");
 	internal static IEnumerable<Country>? countries = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<Country>>
 	(jsonData, new JsonSerializerOptions{IncludeFields = true}); 
@@ -37,20 +38,20 @@ public class CountryController: ControllerBase {
 
 		Country country = new Country();
 		
-		if (countries == null || countries.Any() == false || jsonData == null) 
+		if (countries == null || countries.Any() == false) 
+			//file not found error not handled
 		{				
 			return NotFound(new { message = "Country list unavailable.", error = "LISTEMPTY", statusCode = 404 });
 		} 
-		//csharp linq creates concise syntax similar to for each (singleOrDefault accounts for errors)
-		if (countries.SingleOrDefault(listCountry =>String.Equals(listCountry.countryName, countryName, StringComparison.OrdinalIgnoreCase)) == null) 
+		
+		if (CountryHelper.getCountryFromList(countries, countryName) == null) 
 		{
-			
+			//status code not matching swagger
 			return NotFound(new { message = "Invalid country entered.", error = "INVALIDCOUNTRY", statusCode = 400 });
 		}
 		else
 		{
-			country = countries.SingleOrDefault(listCountry =>
-				String.Equals(listCountry.countryName, countryName, StringComparison.OrdinalIgnoreCase));
+			country = CountryHelper.getCountryFromList(countries, countryName);
 		}
 
 		return Ok(country);
@@ -69,13 +70,13 @@ public class CountryController: ControllerBase {
 		{
 			return NotFound(new { message = "Country list unavailable.", error = "LISTEMPTY", statusCode = 404 });
 		} 
-		if (countries.SingleOrDefault(listCountry =>listCountry.countryName == baseCountryName) != null) 
+		if (CountryHelper.getCountryFromList(countries, baseCountryName) != null)  
 		{
-			baseCountry = countries.SingleOrDefault(listCountry => listCountry.countryName == baseCountryName);
+			baseCountry = CountryHelper.getCountryFromList(countries, baseCountryName);
 		}
-		if (countries.SingleOrDefault(listCountry =>listCountry.countryName == comparisonCountryName) != null) 
+		if (CountryHelper.getCountryFromList(countries, comparisonCountryName) != null) 
 		{
-			comparisonCountry = countries.SingleOrDefault(listCountry => listCountry.countryName == comparisonCountryName);
+			comparisonCountry = CountryHelper.getCountryFromList(countries, comparisonCountryName);
 		}
 		if (baseCountry != null && comparisonCountry != null) {
 			countriesResult = new ComparisonResult(baseCountry, comparisonCountry);
