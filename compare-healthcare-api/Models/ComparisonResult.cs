@@ -2,20 +2,20 @@ namespace compare_healthcare_api.Models;
 
 public class ComparisonResult
 {
-    public Country BaseCountry { get; set; }
-    public Country ComparisonCountry { get; set; }
+    public Country baseCountry { get; set; }
+    public Country comparisonCountry { get; set; }
 	//setters should look at base and comparison and automatically set differences
 	//set country by lower number of rank (i.e. higher)
 	//WinningCountry = BaseCountry.Rank > ComparisonCountry.Rank ? ComparisonCountry.Rank : BaseCountry.Rank
-    public string WinningCountry { get; set; }
+    public string winningCountry { get; set; }
 	//WinnerRankingHigherBy = BaseCountry.Rank - ComparisonCountry.Rank
-    public int WinnerRankingHigherBy { get; set; }
+    public int winnerRankingHigherBy { get; set; }
 	//see above
-    public int WinnerWaitingListReduction { get; set; }
+    public int winnerWaitingListReduction { get; set; }
 	//see above
-    public int WinnerAandEHoursReduction { get; set; }
+    public int winnerAandEHoursReduction { get; set; }
 	//WinningOpinion = BaseCountry.Rank > ComparisonCountry.Rank ? $' {Winner.Name] is ' + ComparisonCountry.Opinion : BaseCountry.Opinion
-    public string WinnerOpinion { get; set; }
+    public string winnerOpinion { get; set; }
 
 /*
     "BaseCountry": "United Kingdom",

@@ -1,4 +1,4 @@
-rankings article
+test: rankings article
 https://www.internationalinsurance.com/health/systems/ 
 
 gpt convo

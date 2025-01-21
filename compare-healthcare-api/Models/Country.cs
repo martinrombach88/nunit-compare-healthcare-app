@@ -2,23 +2,20 @@ namespace compare_healthcare_api.Models;
 
 public class Country
 {
-  private string _name { get; set; }
-  private int _rank { get; set; }
-  private int _monthWaitingListDelay { get; set; }
-  private int _aAndEHoursWait { get; set; }
-  private CostOfTreatment _costOfTreatment { get; set; }
-  private string _customerOpinion { get; set; }
-
-  public Country(string name, int rank, int monthWaitingListDelay, int aAndEHoursWait, CostOfTreatment costOfTreatment, string customerOpinion) 
-	{ _name = name;
-	_rank = rank;
-	_monthWaitingListDelay = monthWaitingListDelay;
-	_aAndEHoursWait = aAndEHoursWait;	
-	_costOfTreatment = costOfTreatment;
-	_customerOpinion = customerOpinion;
+	
+	//Conventions Problem:
+	//Follow the conventions for private/protected/internal or instead of public fields
+	//_name vs Name for internal classes etc
+	//https://stackoverflow.com/questions/450238/to-underscore-or-to-not-to-underscore-that-is-the-question
+  public string countryName { get; set; }
+  public int rank { get; set; }
+  public int monthWaitingListDelay { get; set; }
+  public float aAndEHoursWait { get; set; }
+  public CostOfTreatment costOfTreatment { get; set; }
+  public string customerOpinion { get; set; }
 }
 
 public class CostOfTreatment {
-	public int TaxPercentage { get; set; }
-	public int CashPercentage { get; set; }
+	public int taxPercentage { get; set; }
+	public int cashPercentage { get; set; }
 }
