@@ -1,0 +1,2 @@
+refactor for solid on get
+then 100% testing

@@ -1,4 +1,4 @@
-namespace compare_healthcare_api.Models;
+namespace compare_healthcare_api.CountryModels;
 
 public class ComparisonResult
 {

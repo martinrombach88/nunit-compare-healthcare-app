@@ -1,27 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
-using compare_healthcare_api.Models;
-using compare_healthcare_api.Helpers;
+
+using compare_healthcare_api.CountryModels;
+using compare_healthcare_api.MockDatabase;
 
 namespace compare_healthcare_api.Controllers;
 [ApiController]
 [Route("/")]
 
-//optimise the endpoints:
-//error handling -> error codes don't yet match
-//can you use TDD for this?
-//nunit testing
-//apply SOLID
-
-
 public class CountryController: ControllerBase {
-	//JSON file used instead of database (focus of project is tests, mocking, SOLID etc)
-	internal static string jsonData = System.IO.File.ReadAllText("Controllers/placeholder-data/countries.json");
-	
-	internal static IEnumerable<Country>? countries = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<Country>>
-	(jsonData, new JsonSerializerOptions{IncludeFields = true}); 
-
-	//sample 404 internal static IEnumerable<Country>? countries = null;
+	internal static string jsonData = DataGenerator.getJsonData("MockDatabase/json-files/countries.json");
+	internal static IEnumerable<Country>? countries = DataGenerator.generateDataList<Country>(jsonData);
 
     [HttpGet("GetCountries")]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -30,7 +18,7 @@ public class CountryController: ControllerBase {
     {	
 	    return countries != null ? Ok(countries) : NotFound();
     }
-	
+	/*
 	[HttpGet("GetCountry/{countryName}")]
 	[ProducesResponseType(StatusCodes.Status200OK)]
 	[ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -77,5 +65,6 @@ public class CountryController: ControllerBase {
 
         return Ok(new ComparisonResult(baseCountry, comparisonCountry));
 	}
+	*/
 }
         

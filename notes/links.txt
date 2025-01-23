@@ -1,7 +1,9 @@
 test: rankings article
 https://www.internationalinsurance.com/health/systems/ 
 
-gpt convo
-https://chatgpt.com/c/6783ccd7-4240-800e-9df5-c60f8513b78f
+solid
+https://simple.wikipedia.org/wiki/SOLID_(object-oriented_design)
+
+
 
 

@@ -1,0 +1,9 @@
+solid on get then:
+
+1 install nunit
+2 documentation session, 
+(nunit + repository pattern)
+3 100% testing coverage on get 
+(using repository if it applies)
+4 aim for 100% testing on get again with solid changes
+5 add post and go through it again
