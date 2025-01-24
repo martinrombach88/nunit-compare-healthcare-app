@@ -2,7 +2,7 @@ using System.Text.Json;
 
 namespace compare_healthcare_api.MockDatabase;
 
-public class DataGenerator
+public class DataFactory
 {
     //Open Closed Principle
     //These methods should be reusable and know nothing about the <T> that is used here.

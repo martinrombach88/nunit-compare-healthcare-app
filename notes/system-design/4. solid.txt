@@ -133,15 +133,53 @@ Do you need an AdminUserController and PublicUserController
 that interface the UserController?
 No. Separate controllers for each. The distinction can
 be made at the class level. 
-Make console apps for the admin view and the public view.
+Make views (console apps) for the admin view and the public view
+to further adhere to LSP and keep the country component
+separate from the user component.
 
 4.
 Interface segregation principle
 Interface segregation principle (ISP) states that "[c]lients should not be forced to 
 depend upon interfaces that they do not use."[6][7]
+'depending on something that carries baggage you don't need can cause you
+troubles you didn't expect.'
 
+Tech dependency problems - if framework A depends on database B
+and software S uses framework A and database B changes in irrelevant ways,
+software s is affected.
 
+Code - This could enter in at the view app and controller level.
+We've clearly defined the methods each controller + app needs.
+Both will be depending on the country endpoints as well.
 
 5.
 Dependency inversion principle
 Dependency inversion principle (DIP) states to depend upon abstractions, [not] concretes.[8][7]
+
+Identify 'volatile' concrete elements (elements that are actively being developed) and
+avoid dependency on them. Use stable abstractions of concrete elements (interfaces) instead
+of using the elements directly. 
+
+e.g. User, abstraction PublicUser, AdminUser. 
+Are PublicUser and AdminUser volatile concrete elements? 
+Do you need a further level of abstraction?
+
+Country is a concrete element. 
+The fields in country could potentially be volatile.
+If you wanted to add a field to the country object that was widely 
+requested by publicUsers it may be a problem later on.
+E.g. 
+distinctions in medical sector (a&e, childcare, mental health, endoflife)
+Making these changes to a huge database would be dramatic.
+
+Controllers and methods -> should you have a controller 'factory?'
+MockDatabase does have methods that are interfaced by the controllers,
+an endpoint 'factory' in a sense. 
+
+Use mock database and call your static helper class 'DataFactory'
+to follow this concept. Research may lead to a more coherent style to
+follow, try docs and the udemy repo.
+
+Comparison methods could be another point of abstraction and implementing
+factories.
+
