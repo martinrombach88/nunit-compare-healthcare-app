@@ -1,0 +1,93 @@
+[
+  {
+    "countryName": "United Kingdom",
+    "rank": 36,
+    "monthWaitingListDelay": 18,
+    "aAndEHoursWait": 8,
+    "costOfTreatment": {
+      "taxPercentage": 100,
+      "cashPercentage": 0
+    },
+    "customerOpinion": "Long wait, poor services"
+  },
+  {
+    "countryName": "Switzerland",
+    "rank":  10,
+    "monthWaitingListDelay": 1,
+    "aAndEHoursWait": 0.5,
+    "costOfTreatment": {
+      "taxPercentage": 17,
+      "cashPercentage": 83
+    },
+    "customerOpinion":"High-quality, efficient healthcare with moderate costs"
+  },
+  {
+    "countryName":"Netherlands",
+    "rank":  11,
+    "monthWaitingListDelay": 1,
+    "aAndEHoursWait": 1,
+    "costOfTreatment": {
+      "taxPercentage": 70,
+      "cashPercentage":30
+    },
+    "customerOpinion":"Efficient and high-quality care with reasonable costs"
+  },
+
+  {
+    "countryName": "Israel",
+    "rank":  6,
+    "monthWaitingListDelay": 2,
+    "aAndEHoursWait": 1,
+    "costOfTreatment": {
+      "taxPercentage":  63,
+      "cashPercentage":37
+    },
+    "customerOpinion":"High-quality care with moderate wait times"
+  },
+  {
+    "countryName": "France",
+    "rank":  20,
+    "monthWaitingListDelay":2,
+    "aAndEHoursWait":2,
+    "costOfTreatment": {
+      "taxPercentage":77,
+      "cashPercentage":23
+    },
+    "customerOpinion":"Highly rated healthcare with short wait times for emergencies, but long wait times for non-urgent care"
+  },
+
+  {
+    "countryName":  "United States",
+    "rank": 69,
+    "monthWaitingListDelay":4,
+    "aAndEHoursWait":3,
+    "costOfTreatment": {
+      "taxPercentage":0,
+      "cashPercentage":100
+    },
+    "customerOpinion": "Mixed; excellent quality for those with insurance, but high costs and long waits for the uninsured."
+  },
+  {
+    "countryName": "South Korea",
+    "rank": 2,
+    "monthWaitingListDelay": 1,
+    "aAndEHoursWait": 1,
+    "costOfTreatment": {
+      "taxPercentage": 50,
+      "cashPercentage": 50
+    },
+    "customerOpinion": "High; widely regarded as efficient and affordable"
+  },
+
+  {
+    "countryName": "Singapore",
+    "rank": 1,
+    "monthWaitingListDelay": 1,
+    "aAndEHoursWait": 1,
+    "costOfTreatment": {
+      "taxPercentage": 30,
+      "cashPercentage": 70
+    },
+    "customerOpinion": "Ranked number 1 for quality care and efficiency"
+  }
+]
