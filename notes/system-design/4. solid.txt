@@ -1,2 +1,147 @@
-refactor for solid on get
-then 100% testing
+1. read Clean Architecture Part 3 Design Principles chapter on SOLID design principles
+2. refactor for solid (user endpoints and data context seem to be the big decisions)
+3. nunit testing
+
+1.
+Single responsibility principle
+Definition: Single-responsibility principle (SRP) states that "[t]here should never be more than one reason for a class to change."[2] 
+In other words, every class should have only one responsibility.[3]
+
+A class/module should be only for one 'actor'. e.g. An employee class has a method that affects accounts and another
+that affects marketing. This violates SOLID. 
+Separate code that different actors depend on, so an accountant class and marketer class works better.
+For components, classes etc, gather together things that change at the same times and for the same reasons.
+Separate those things that change at different times or for different reasons.
+
+Who are the actors that the API is for? How might one change for one actor affect another?
+Is this difficult to apply here?
+
+Common Closure Principles -
+Gather into components classes that change at the same time for the same reasons.
+That way when you schedule a release, the changes will stay within the component's scope.
+
+Architectural Level - Axis of Change -> probably not as applicable, but see where you can do stuff
+
+SRP -> CHANGES FOR THIS API
+The endpoints for getting countries and comparison results 
+and the proposed endpoints for users should have different purposes.
+Data (even if mocked) should be separated as well, especially if you want to fully extend it to Azure later.
+
+CountryModels -> Classes related to the countries and comparisons (create country, update country, delete country)
+UserModels -> classes related to the user controller (CRUD)
+What can a user do? You need a user story (based on the business question) to complete this
+-- whatever they can do, there isn't overlap between actions affecting the user data and actions affecting
+the countries.
+
+Mock Database -> classes related to the JSON data mocking. 
+These should have their own folder
+The list initialisation should be List<T> so countries and users can become JSON data,
+and so user mocking isn't dependant on the countries, etc. (probably OCP as well as SRP.)
+SearchData method should take <T> as well, and return <T> 
+CountryController and UserController can have getUser and getCountries without knowing what each others
+classes look like. This also means any updates to database access will be universal as well (with a real db)
+
+Combining classes into a component -> what is a component for this API?
+Country component -> MVC of CountryController, its related models?
+Data component -> technically the model? which makes the models folders confusing (but csharp convention).
+
+
+2.
+Open–closed principle
+Open–closed principle (OCP) states that "[s]oftware entities ... should be open for extension, but closed for modification."[4]
+Applying one way relationships to source code and hierarchies to important code.
+Information hiding (only make relevant fields public) and directional control (one way relationships)
+
+The data <T> approach from earlier fulfills this objective.
+there could be a relationship between user and country where user mustn't be able to make modifications to country
+whether they are able to perform crud on the country object or not.
+
+User story
+I want to compare my country to the number one ranked country in the world.
+I want to save my result and show it to people on social media.
+1. i create an account
+2. I login
+3. I ask for a comparison result
+4. I add the comparison result to my saved results list (which is then available on a savedComparisons list.)
+Endpoints:
+CreateUser
+LoginAsUser
+GetComparisonResult (existing - additional fields require a new User endpoint interfacing this and Database
+comparison methods)
+SaveComparisonToUserList (or whatever)
+GetUserComparisons
+
+User Object with a ComparisonResult list. If another 'actor' needs country data, changes will affect user as well.
+When building the list, ComparisonResult itself shouldn't change. An interface (e.g. userComparisonResult) is needed if 
+additional fields are needed. The base fields of comparison result (winning country, compared a&e or compared month wait)
+should be the same. 
+
+Hide what you can through interfacing or method<T> approaches. 
+When you make user endpoints and content, there will be plenty of 
+opportunity to make one way relationships and knowledge hiding.
+
+3.
+Liskov substitution principle
+Liskov substitution principle (LSP) states that "[f]unctions that use pointers or references to base classes 
+must be able to use objects of derived classes without knowing it."[5] See also design by contract.[5]
+User object is a good opportunity for this. Base class should have name, date added
+but sub classes should define what each user can do without showing them
+what other sub classes can do.
+
+Do admin users with exclusive methods and 
+public users with exclusive methods violate this principle?
+e.g. bird.fly.
+instantiate ostrich. 
+ostrich overrides method fly with an exception.
+Solution:
+
+User - no methods?, just identifier fields?
+user.name
+user.id
+user.dateAdded
+
+Admin user - methods related to tasks relevant to its role
+user list crud functions
+crud for countries and country submissions
+e.g.
+countrylist edits
+submitted countrylist (crowdsource country healthcare info, approve if correct).
+admin can choose submitted to move to core list
+admin users shouldn't have powers beyond this
+
+Public user - methods related to tasks relevant to its role
+submitCountry() - post request, feedback returned
+user has no access to the process of approving added countries
+and can have their submission rejected. 
+saveComparisonToPersonalList - one list per user, part of 
+the public user object as a field. crud functions available 
+to that user allowing them to edit their personal list
+and in turn their personal object.
+
+When does LSP present itself?
+Keep an eye on this. You may violate it later, but
+for now user class with no methods and methods on interfaces seems the best way.
+endpoints should have single purposes anyway for srp.
+
+The public and admin views and their functions 
+should be calling the country controller and 
+user controller in specific contexts with objects as params.
+So if you don't build the countryController endpoints
+into the UserController, you adhere to standard practice anyway.
+
+Do you need an AdminUserController and PublicUserController
+that interface the UserController?
+No. Separate controllers for each. The distinction can
+be made at the class level. 
+Make console apps for the admin view and the public view.
+
+4.
+Interface segregation principle
+Interface segregation principle (ISP) states that "[c]lients should not be forced to 
+depend upon interfaces that they do not use."[6][7]
+
+
+
+5.
+Dependency inversion principle
+Dependency inversion principle (DIP) states to depend upon abstractions, [not] concretes.[8][7]

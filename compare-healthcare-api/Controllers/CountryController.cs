@@ -5,11 +5,11 @@ using compare_healthcare_api.MockDatabase;
 
 namespace compare_healthcare_api.Controllers;
 [ApiController]
-[Route("/")]
+[Route("/Country/")]
 
 public class CountryController: ControllerBase {
-	internal static string jsonData = DataGenerator.getJsonData("MockDatabase/json-files/countries.json");
-	internal static IEnumerable<Country>? countries = DataGenerator.generateDataList<Country>(jsonData);
+	internal static IEnumerable<Country>? countries = DataGenerator.generateDataList<Country>
+		(DataGenerator.getJsonData("MockDatabase/json-files/countries.json"));
 
     [HttpGet("GetCountries")]
     [ProducesResponseType(StatusCodes.Status200OK)]
