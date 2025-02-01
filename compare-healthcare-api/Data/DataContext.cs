@@ -20,21 +20,5 @@ namespace compare_healthcare_api.Data
                 (_jsonDataString, new JsonSerializerOptions { IncludeFields = true });
         }
         
-        //you can't make singleordefault comparisons on classes that don't exist yet.
-        //come back to this and have a simple 'get items' end point running first.
-        
-        //public T getItemByName<T>()
-        //{
-         //   IEnumerable<T> items = getItems<T>();
-
-            
-                //return items.SingleOrDefault(items =>
-                  //  String.Equals(items.itemName, itemName, StringComparison.OrdinalIgnoreCase));
-            
-            //you are running a comparison on a list that doesn't contain
-            //the field .itemName yet.
-
-        //}
-
     }
 }

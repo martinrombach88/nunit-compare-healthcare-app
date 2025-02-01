@@ -13,6 +13,13 @@ namespace compare_healthcare_api.CountryRepositories
         {
             return _dataContext.getItems<Country>();
         }
+
+        public Country getCountry(string countryName)
+        {
+            //Can you make this generic?
+            IEnumerable<Country> countries = _dataContext.getItems<Country>();
+            return countries.SingleOrDefault(countries => String.Equals(countries.countryName, countryName, StringComparison.OrdinalIgnoreCase));
+        }
     }
     
 }
