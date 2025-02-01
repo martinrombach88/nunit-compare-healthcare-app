@@ -1,23 +1,34 @@
 using Microsoft.AspNetCore.Mvc;
-
 using compare_healthcare_api.CountryModels;
-using compare_healthcare_api.MockDatabase;
+using compare_healthcare_api.Repositories;
+using compare_healthcare_api.Data;
+using compare_healthcare_api.CountryRepositories;
 
 namespace compare_healthcare_api.Controllers;
 [ApiController]
 [Route("/Country/")]
 
 public class CountryController: ControllerBase {
-	internal static IEnumerable<Country>? countries = DataGenerator.generateDataList<Country>
+	
+	[HttpGet("GetCountries")]
+	[ProducesResponseType(StatusCodes.Status200OK)]
+	[ProducesResponseType(StatusCodes.Status404NotFound)]
+	public IActionResult GetCountries()
+	{	
+		CountryRepository countryRepository = new CountryRepository();
+		IEnumerable<Country> countries = countryRepository.getItems<Country>();
+		return countries != null ? Ok(countries) : NotFound();
+	}
+	
+	//comparison result should be generated here. 
+	//the repository is unopinionated, so the controller should handle
+	//get calls, calling repository.get() twice with the two string inputs.
+	//if the controller acts on this data and returns a result class,
+	//it should be done here, the controller being the 'client' in this situation.
+	/*internal static IEnumerable<Country>? countries = DataGenerator.generateDataList<Country>
 		(DataGenerator.getJsonData("MockDatabase/json-files/countries.json"));
 
-    [HttpGet("GetCountries")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-	public IActionResult GetCountries()
-    {	
-	    return countries != null ? Ok(countries) : NotFound();
-    }
+
 	/*
 	[HttpGet("GetCountry/{countryName}")]
 	[ProducesResponseType(StatusCodes.Status200OK)]

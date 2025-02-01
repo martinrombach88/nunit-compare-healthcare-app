@@ -1,5 +1,5 @@
-namespace DefaultNamespace;
-
+namespace compare_healthcare_api.UserModels
+{
 public class PublicUser
 {
     /*
@@ -12,4 +12,5 @@ public class PublicUser
        to that user allowing them to edit their personal list
        and in turn their personal object. 
      */
+}
 }

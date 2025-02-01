@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using compare_healthcare_api.UserModels;
 using compare_healthcare_api.CountryModels;
-using compare_healthcare_api.MockDatabase;
+using compare_healthcare_api.Data;
 
 namespace compare_healthcare_api.AdminUsers;
 [ApiController]
