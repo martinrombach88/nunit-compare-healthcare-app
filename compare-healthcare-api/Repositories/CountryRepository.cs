@@ -1,7 +1,7 @@
-using compare_healthcare_api.Data;
-using compare_healthcare_api.CountryModels;
-using compare_healthcare_api.Repositories;
 using System.Text.Json;
+using compare_healthcare_api.CountryModels;
+using compare_healthcare_api.Data;
+using compare_healthcare_api.Repositories;
 namespace compare_healthcare_api.CountryRepositories
 {
     public class CountryRepository : Repository

@@ -23,4 +23,8 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\compare-healthcare-api\compare-healthcare-api.csproj" />
+  </ItemGroup>
+
 </Project>

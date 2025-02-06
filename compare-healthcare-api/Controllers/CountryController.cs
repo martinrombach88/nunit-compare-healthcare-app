@@ -1,8 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
 using compare_healthcare_api.CountryModels;
-using compare_healthcare_api.Repositories;
-using compare_healthcare_api.Data;
 using compare_healthcare_api.CountryRepositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace compare_healthcare_api.Controllers;
 [ApiController]
