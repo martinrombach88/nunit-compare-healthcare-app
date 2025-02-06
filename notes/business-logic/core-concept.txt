@@ -1,5 +1,6 @@
 Business / Charity goal:
-A country healthcare comparison site to campaign for regulated, low price, semi-privatised healthcare in the UK and across the world.
+A country healthcare comparison site to campaign for regulated, low price,
+ semi-privatised healthcare in the UK and across the world.
 
 Full stack website with a data driven API?
 What does data driven mean?
@@ -18,28 +19,48 @@ UK
 - experiences in south korea make me think nhs should no longer be free, but cheap
 - free healthcare in the UK subsidized to businesses has become exploitation of the tax payer rather than 
 fair market economics in action, low quality for business profit etc
-- fear of the american system leads to UK citizens desperate to keep the NHS, which misses the point, 
+- fear of the american system leads to UK citizens desperate to keep the NHS as it is, which misses the point, 
 the US isn't only the country in the world but it feels like the only one we hear about
 
-South Korea successfully executes a system where centralised taxation occurs but healthcare is part paid by the customer
-Comparison example
-Horrible waiting lists in UK / really expensive, 1 week private in South Korea with taxation split 
+South Korea successfully executes a system where centralised taxation occurs but 
+healthcare is part paid by the customer. Its ranked second in the world.
+- experience makes me want to see if UK could potentially have a referendum
+on how the NHS is funded.
+
+Splitting the bill with the rich
+- the rich are paying for a system they don't use
+- therefore feel empowered to avoid paying for it with tax avoidance, lobbying, defunding, target based approaches
+when tories in power) 
+- if you split the bill, everyone who uses it is 'responsible' and doing their bit. Private prices go down, quality goes up.
+50 50 split seems to fit the UK philosophy
+50% recovery of NHS funding could not only repair the healthcare system but
+funding could buy back trains and power companies :D
+...getting ahead of yourself?
+
+NHS Referendum -> what projects could come out of pursuing this?
+- chatbots that explain your ideas, accurately answers questions, debates well
+- calculation applications that explore the financial predictions (data science?)
+could you run a data analysis project on the success/failure of your proposed referendum?
+how would you do that?
 
 How do you quantify that?
-- Covid death toll
-- consumer satisfaction
-- are there other products making these comparisons already?
+- Waiting list lengths
+- A and E waiting times in hours
+- customer satisfaction
+- world ranking
 
 In the context of the portfolio / job hunt:
 Build a prototype of the core product -> the comparison site.
 
-Frontend - mobile app is best (next.js web app desirable)
-Keep it simple! -> just the product, don't get bogged down in the promotion,
-this is a backend technology exploration first and foremost
-
 Backend - csharp API with desired tech to explore
 API on Azure -> can you make it free tier with an App Service?
 200 entries, one for each country. API can be public to cut costs.
+
+-- optional --
+Frontend - mobile app is best (next.js web app desirable)
+Keep it simple! -> just the product, don't get bogged down in the promotion.
+
+this is a backend technology exploration first and foremost
 
 Once you have the prototype app, you can use it during campaigning to
 show during networking.

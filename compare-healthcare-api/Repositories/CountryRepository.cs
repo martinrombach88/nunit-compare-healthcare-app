@@ -16,7 +16,7 @@ namespace compare_healthcare_api.CountryRepositories
 
         public Country getCountry(string countryName)
         {
-            //Can you make this generic?
+            //Can you make this generic without the db?
             IEnumerable<Country> countries = _dataContext.getItems<Country>();
             return countries.SingleOrDefault(countries => String.Equals(countries.countryName, countryName, StringComparison.OrdinalIgnoreCase));
         }

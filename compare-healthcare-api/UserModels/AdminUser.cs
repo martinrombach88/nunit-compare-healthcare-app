@@ -3,7 +3,10 @@ namespace compare_healthcare_api.UserModels
 
     public class AdminUser : User
     {
-
+        //user fields
+        //admin true
+        //actions should all impact a 'CountrySubmissionController'
+        
         /*
          What's best practice for interfaces?
 

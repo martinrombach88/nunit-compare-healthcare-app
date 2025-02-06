@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/martin/RiderProjects/nunit-compare-healthcare-app/comparison-console-app/comparison-console-app.csproj": {}
+    "/Users/martin/RiderProjects/nunit-compare-healthcare-app/playground-console-app/comparison-console-app.csproj": {}
   },
   "projects": {
-    "/Users/martin/RiderProjects/nunit-compare-healthcare-app/comparison-console-app/comparison-console-app.csproj": {
+    "/Users/martin/RiderProjects/nunit-compare-healthcare-app/playground-console-app/comparison-console-app.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/martin/RiderProjects/nunit-compare-healthcare-app/comparison-console-app/comparison-console-app.csproj",
+        "projectUniqueName": "/Users/martin/RiderProjects/nunit-compare-healthcare-app/playground-console-app/comparison-console-app.csproj",
         "projectName": "comparison-console-app",
-        "projectPath": "/Users/martin/RiderProjects/nunit-compare-healthcare-app/comparison-console-app/comparison-console-app.csproj",
+        "projectPath": "/Users/martin/RiderProjects/nunit-compare-healthcare-app/playground-console-app/comparison-console-app.csproj",
         "packagesPath": "/Users/martin/.nuget/packages/",
-        "outputPath": "/Users/martin/RiderProjects/nunit-compare-healthcare-app/comparison-console-app/obj/",
+        "outputPath": "/Users/martin/RiderProjects/nunit-compare-healthcare-app/playground-console-app/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/martin/.nuget/NuGet/NuGet.Config"

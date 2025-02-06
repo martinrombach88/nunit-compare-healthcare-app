@@ -2,6 +2,10 @@ namespace compare_healthcare_api.UserModels
 {
 public class PublicUser
 {
+    //user fields
+    //submissionFeedback (list of strings)
+    //comparisonList
+    
     /*
      * Public user - methods related to tasks relevant to its role
        submitCountry() - post request, feedback returned

@@ -1,0 +1,25 @@
+Task 
+
+1. GetAll
+Csharp generics 
+https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-type-parameters
+Type naming guidelines (type arguments like function(T item) are a good move in a generic method or constructor
+https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names#type-parameter-naming-guidelines
+
+Country Controller talks to Country Repository, which declares repository. 
+Repository declares data context during construction.
+
+2. GetOne
+3. GetComparisonResult
+- how do you follow solid with this? brainstorm before implementation
+comparison result takes two items and
+a result class constructor function, returns the result class
+
+Result:
+1 Get all uses the generic repository
+2 Get one uses a custom repository due to the comparison based on field names.
+(feels like you could solve this somehow)
+3 Get comparison result is an api 'client-side' that makes results based on database output.
+Database should remain ignorant and just continue to send get one.
+
+

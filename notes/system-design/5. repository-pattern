@@ -3,8 +3,18 @@
 What is repository pattern?
 
 Find a book chapter that includes repository pattern
-rather than relying on articles / videos.
 
-How can you implement repository pattern in this project?
+Patterns of Enterprise Application Architecture (Martin Fowler et al) 315
+Overview -> separate querying from database layers. Use the repository 
+as a separation between querying clients and databases so that
+databases are not directly contacted by clients.
 
-What parts of solid are strengthened or adhered to through repository pattern?
+In Csharp
+Controller - Repository - Data Context - Database
+Linkedin
+https://www.linkedin.com/pulse/implementing-repository-pattern-c-net-mahdi-shayesteh-arfa/
+Microsoft Docs
+https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-cs
+
+You should definitely attempt implementation before NUnit.
+

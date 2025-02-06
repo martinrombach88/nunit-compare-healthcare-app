@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CUy5reWU4FBRse53w6nApzyK07Dhj8Sj/TVXKWLdkbHmwZMDd5G5ZnE6VsyGoZffaAvhE72XcYlRc0I6QLHMGQ==",
+  "dgSpecHash": "jGpTLrqq3+I=",
   "success": true,
-  "projectFilePath": "/Users/martin/RiderProjects/nunit-compare-healthcare-app/comparison-console-app/comparison-console-app.csproj",
+  "projectFilePath": "/Users/martin/RiderProjects/nunit-compare-healthcare-app/playground-console-app/comparison-console-app.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,0 +1,17 @@
+Next:
+Test the Get section.
+
+Nunit:
+Review docs: https://docs.nunit.org/
+1. init project in solution:
+dotnet new nunit -o TestProject1
+2. Arrange, Act, Assert
+
+Structure for a testing environment.
+Arrange – Set up the test by preparing any necessary objects, dependencies, or initial conditions.
+Act – Execute the actual behavior or function being tested.
+Assert – Verify the outcome by checking if the expected result matches the actual result.
+
+Sidenote: Tests read from a file.Any way to test asynchronicity without a full db?
+
+3. Tear downs and memory management. API specific best practices if possible.
