@@ -1,0 +1,4 @@
+✔️ DO use PascalCasing for all public member, type, and namespace names consisting of multiple words.
+✔️ DO use camelCasing for parameter names.
+
+https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/capitalization-conventions

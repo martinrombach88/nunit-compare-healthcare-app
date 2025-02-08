@@ -1,21 +1,28 @@
 using compare_healthcare_api.CountryModels;
-using compare_healthcare_api.CountryRepositories;
+using compare_healthcare_api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace compare_healthcare_api.Controllers;
 [ApiController]
 [Route("/Country/")]
 
-public class CountryController: ControllerBase {
+public class CountryController: ControllerBase
+{
+
+	private readonly ICountryRepository _iCountryRepository;
+
+	public CountryController(ICountryRepository countryRepository)  // DI through constructor
+	{
+		_iCountryRepository = countryRepository;
+	}
 	
-	CountryRepository countryRepository = new CountryRepository();
 	
 	[HttpGet("GetCountries")]
 	[ProducesResponseType(StatusCodes.Status200OK)]
 	[ProducesResponseType(StatusCodes.Status404NotFound)]
 	public IActionResult GetCountries()
 	{	
-		IEnumerable<Country> countries = countryRepository.getItems<Country>();
+		IEnumerable<Country> countries = _iCountryRepository.GetAll<Country>();
 		return countries != null ? Ok(countries) : NotFound();
 	}
 	
@@ -25,7 +32,7 @@ public class CountryController: ControllerBase {
 	[ProducesResponseType(StatusCodes.Status404NotFound)]
 	public IActionResult GetCountry(string countryName)
 	{
-		Country country = countryRepository.getCountry(countryName);
+		Country country = _iCountryRepository.GetCountry(countryName);
 		
 		if (country == null) 
 		{
@@ -43,8 +50,8 @@ public class CountryController: ControllerBase {
 	public IActionResult GetComparisonResult(string baseCountryName, string comparisonCountryName)
 	{
 		ComparisonResult countriesResult = null;
-		Country baseCountry = countryRepository.getCountry(baseCountryName);
-		Country comparisonCountry =  countryRepository.getCountry(comparisonCountryName);
+		Country baseCountry = _iCountryRepository.GetCountry(baseCountryName);
+		Country comparisonCountry =  _iCountryRepository.GetCountry(comparisonCountryName);
 
 		if (baseCountry == null || comparisonCountry == null) {
 			return BadRequest();

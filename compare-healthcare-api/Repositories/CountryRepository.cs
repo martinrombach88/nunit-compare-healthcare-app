@@ -1,25 +1,26 @@
-using System.Text.Json;
 using compare_healthcare_api.CountryModels;
 using compare_healthcare_api.Data;
-using compare_healthcare_api.Repositories;
-namespace compare_healthcare_api.CountryRepositories
-{
-    public class CountryRepository : Repository
-    {
-        //json file path replaces the config file
-        private DataContext _dataContext = new DataContext("Data/json-files/countries.json");
 
-        public IEnumerable<Country> getItems<Country>()
+namespace compare_healthcare_api.Repositories
+{
+    public class CountryRepository : ICountryRepository
+    {
+        //stretch goal -> fully implement swagger data context and db
+        private DataContext _dataContext = new ("Data/json-files/countries.json");
+
+        public IEnumerable<Country> GetAll<Country>()
         {
-            return _dataContext.getItems<Country>();
+            return _dataContext.GetItems<Country>();
         }
 
-        public Country getCountry(string countryName)
+        public Country GetCountry(string countryName)
         {
             //Can you make this generic without the db?
-            IEnumerable<Country> countries = _dataContext.getItems<Country>();
+            IEnumerable<Country> countries = _dataContext.GetItems<Country>();
             return countries.SingleOrDefault(countries => String.Equals(countries.countryName, countryName, StringComparison.OrdinalIgnoreCase));
         }
+
+
     }
     
 }

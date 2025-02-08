@@ -1,50 +1,49 @@
-//added a reference to the target project on this project (see screenshot 5, 6)
+//added a reference to the target project (compare-healthcare-api)
+//on this project (see screenshot 5, 6)
+using compare_healthcare_api.Repositories;
+using compare_healthcare_api.Controllers;
 using compare_healthcare_api.CountryModels;
-using compare_healthcare_api.CountryRepositories;
 using Moq;
+using Microsoft.AspNetCore.Mvc;
 
 namespace compare_healthcare_api_tests;
-
-
-
+[TestFixture]
+/// <summary>
+/// Tests for the methods in the CountryController
+/// </summary>
+/// 
 public class CountryControllerTests
 {
-    /// <summary>
-    /// Arrange: Setup method initialising mocks before each test
-    /// </summary>
-    /// 
+    private Mock<ICountryRepository> _mockCountryRepo;
+    private CountryController _controller;
+   
     [SetUp]
     public void Setup()
     {
-        //controller method tested
-        //mock repository made
-        //mock results
+        //Arrange generate mock repository interface
+        //and pass to controller
+        _mockCountryRepo = new Mock<ICountryRepository>();
+        _controller = new CountryController(_mockCountryRepo.Object);
         
-        CountryRepository countryRepository = new CountryRepository();  
-        
-    }
+        IEnumerable<Country> successCountries = new List<Country>
+        {
+            new Country {aAndEHoursWait = 24, countryName = "LoserLand", monthWaitingListDelay = 12, rank = 2, customerOpinion = "awful", costOfTreatment = new CostOfTreatment {cashPercentage = 0, taxPercentage = 100}},
+            new Country {aAndEHoursWait = 2, countryName = "WinnerLand", monthWaitingListDelay = 3, rank =1, customerOpinion = "great", costOfTreatment = new CostOfTreatment {cashPercentage = 50, taxPercentage = 50}}
 
-    [Test]
-    public void GetAll()
-    {
-        //IEnumerable<Country> countries = 
-        //Act
-		//The target endpoint fulfills its function
-		
+        };
         
+        _mockCountryRepo.Setup(repo => repo.GetAll<Country>()).Returns(fakeCountries);
         
-		//Assert
-		//The expected result is seen
     }
     
-    //test getone
-    //test get comparison
-
-    //analyse memory usage and try to use tear downs appropriately
-    [TearDown]
-    public void TearDown()
+    //you have progress here. implement these inputs and you have tests
+    [TestCase(fakeCountries, ExpectedResult = true) ]
+    [TestCase(null, ExpectedResult = NotFoundObjectResult())]
+    public IActionResult GetAllEndpointReturnsListOfCountries()
     {
-        
+        //Arrange - init fake data for tests
+        IActionResult result = _controller.GetCountries();
+       // return countries != null ? Ok(countries) : NotFound();
+       
     }
-
 }

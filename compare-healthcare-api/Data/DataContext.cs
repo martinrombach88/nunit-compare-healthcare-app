@@ -14,7 +14,7 @@ namespace compare_healthcare_api.Data
             _jsonDataString =  System.IO.File.ReadAllText(jsonFilePath);
         }
 
-        public IEnumerable<T> getItems<T>()
+        public IEnumerable<T> GetItems<T>()
         {
             return System.Text.Json.JsonSerializer.Deserialize<IEnumerable<T>>
                 (_jsonDataString, new JsonSerializerOptions { IncludeFields = true });

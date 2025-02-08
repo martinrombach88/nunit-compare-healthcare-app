@@ -12,6 +12,6 @@ Arrange – Set up the test by preparing any necessary objects, dependencies, or
 Act – Execute the actual behavior or function being tested.
 Assert – Verify the outcome by checking if the expected result matches the actual result.
 
-Sidenote: Tests read from a file.Any way to test asynchronicity without a full db?
-
-3. Tear downs and memory management. API specific best practices if possible.
+1. Do the readings and confirm how the repositories flow
+https://learn.microsoft.com/en-us/ef/core/testing/choosing-a-testing-strategy
+https://learn.microsoft.com/en-us/ef/core/testing/testing-without-the-database

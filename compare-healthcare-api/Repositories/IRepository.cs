@@ -1,7 +1,7 @@
 namespace compare_healthcare_api.Repositories
 
 {
-    interface IRepository
+    public interface IRepository
     {
         public IEnumerable<T> GetAll<T>();
     }
