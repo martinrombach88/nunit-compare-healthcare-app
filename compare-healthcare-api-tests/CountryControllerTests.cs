@@ -32,18 +32,17 @@ public class CountryControllerTests
 
         };
         
-        _mockCountryRepo.Setup(repo => repo.GetAll<Country>()).Returns(fakeCountries);
+        _mockCountryRepo.Setup(repo => repo.GetAll<Country>()).Returns(successCountries);
         
     }
     
     //you have progress here. implement these inputs and you have tests
-    [TestCase(fakeCountries, ExpectedResult = true) ]
-    [TestCase(null, ExpectedResult = NotFoundObjectResult())]
+
     public IActionResult GetAllEndpointReturnsListOfCountries()
     {
         //Arrange - init fake data for tests
         IActionResult result = _controller.GetCountries();
-       // return countries != null ? Ok(countries) : NotFound();
-       
+       // return result != null ? Ok(result) : NotFound();
+       return result;
     }
 }
